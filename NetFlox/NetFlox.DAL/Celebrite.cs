@@ -14,6 +14,6 @@ namespace NetFlox.DAL
         public string UrlPhoto { get; set; }
         //public byte[] Photo { get; set; }
 
-        public virtual ICollection<RoleCelebriteFilm> RoleCelebriteFilms { get; set; }
+        public virtual ICollection<RoleCelebriteFilm> RoleCelebriteFilms { get; set; } = new HashSet<RoleCelebriteFilm>();
     }
 }

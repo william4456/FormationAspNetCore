@@ -9,27 +9,27 @@ using NetFlox.DAL;
 
 namespace NetFlox.Controllers
 {
-    public class FilmsController : Controller
+    public class CelebritesController : Controller
     {
         private readonly NetFloxEntities _context;
 
-        public FilmsController(NetFloxEntities context)
+        public CelebritesController(NetFloxEntities context)
         {
             _context = context;
         }
 
-        // GET: Films
+        // GET: Celebrites
         public async Task<IActionResult> Index([FromQuery] int? start, [FromQuery] int? count)
         {
-            var films = await _context.Films
-                .OrderByDescending(f => f.Annee)
+            var celebrites = await _context.Celebrites
+                .OrderBy(c => c.Nom)
                 .Skip(start ?? 0)
                 .Take(count ?? 50)
                 .ToListAsync();
-            return View(films);
+            return View(celebrites);
         }
 
-        // GET: Films/Details/5
+        // GET: Celebrites/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -37,18 +37,18 @@ namespace NetFlox.Controllers
                 return NotFound();
             }
 
-            var film = await _context.Films
-                .Include(f => f.RoleCelebriteFilms)
+            var celebrite = await _context.Celebrites
+                .Include(c => c.RoleCelebriteFilms)
                 .ThenInclude(rcf => rcf.Role)
-                .Include(f => f.RoleCelebriteFilms)
-                .ThenInclude(rcf => rcf.Celebrite)
+                .Include(c => c.RoleCelebriteFilms)
+                .ThenInclude(rcf => rcf.Film)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (film == null)
+            if (celebrite == null)
             {
                 return NotFound();
             }
 
-            return View(film);
+            return View(celebrite);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace NetFlox.DAL
         public string UrlAffiche { get; set; }
         //public byte[] Affiche { get; set; }
 
-        public virtual ICollection<RoleCelebriteFilm> RoleCelebriteFilms { get; set; }
-        public virtual ICollection<Favori> Favoris { get; set; }
+        public virtual ICollection<RoleCelebriteFilm> RoleCelebriteFilms { get; set; } = new HashSet<RoleCelebriteFilm>();
+        public virtual ICollection<Favori> Favoris { get; set; } = new HashSet<Favori>();
     }
 }

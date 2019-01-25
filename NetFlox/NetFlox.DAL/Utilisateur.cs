@@ -12,6 +12,6 @@ namespace NetFlox.DAL
         public string AdresseEmail { get; set; }
         public DateTime DateInscription { get; set; }
 
-        public virtual ICollection<Favori> Favoris { get; set; }
+        public virtual ICollection<Favori> Favoris { get; set; } = new HashSet<Favori>();
     }
 }
