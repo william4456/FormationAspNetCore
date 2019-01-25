@@ -96,8 +96,7 @@ namespace ConsoleTest
 
                 var anthonyFerrante = entities.Celebrites.Add(new Celebrite
                 {
-                    Nom = "Ferrante",
-                    Prenom = "Anthony",
+                    Nom = "Anthony Ferrante",
                     DateNaissance = null,
                     UrlPhoto = "https://m.media-amazon.com/images/M/MV5BMTY2NjM2MDcyMl5BMl5BanBnXkFtZTcwOTcyNjU3Mw@@._V1_UY317_CR5,0,214,317_AL_.jpg",
                 });

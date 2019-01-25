@@ -95,12 +95,12 @@ namespace NetFlox.DAL
                 .Entity<Celebrite>()
                 .Property(c => c.Nom)
                 .IsRequired()
-                .HasColumnType("nvarchar(100)");
-            modelBuilder
-                .Entity<Celebrite>()
-                .Property(c => c.Prenom)
-                .IsRequired()
-                .HasColumnType("nvarchar(100)");
+                .HasColumnType("nvarchar(200)");
+            //modelBuilder
+            //    .Entity<Celebrite>()
+            //    .Property(c => c.Prenom)
+            //    .IsRequired()
+            //    .HasColumnType("nvarchar(100)");
             modelBuilder
                 .Entity<Celebrite>()
                 .Property(c => c.DateNaissance)
@@ -127,6 +127,10 @@ namespace NetFlox.DAL
                 .Property(f => f.Titre)
                 .IsRequired()
                 .HasColumnType("nvarchar(200)");
+            modelBuilder
+                .Entity<Film>()
+                .Property(f => f.Description)
+                .HasColumnType("nvarchar(1000)");
             modelBuilder
                 .Entity<Film>()
                 .Property(f => f.Pays)

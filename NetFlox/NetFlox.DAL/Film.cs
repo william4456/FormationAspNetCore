@@ -8,6 +8,7 @@ namespace NetFlox.DAL
     {
         public int Id { get; set; }
         public string Titre { get; set; }
+        public string Description { get; set; }
         public int? Annee { get; set; }
         public string Pays { get; set; }
 
