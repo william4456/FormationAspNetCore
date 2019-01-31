@@ -19,12 +19,10 @@ namespace NetFlox.Controllers
         }
 
         // GET: Celebrites
-        public async Task<IActionResult> Index([FromQuery] int? start, [FromQuery] int? count)
+        public async Task<IActionResult> Index()
         {
             var celebrites = await _context.Celebrites
                 .OrderBy(c => c.Nom)
-                .Skip(start ?? 0)
-                .Take(count ?? 50)
                 .ToListAsync();
             return View(celebrites);
         }

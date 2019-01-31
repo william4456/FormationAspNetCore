@@ -19,17 +19,25 @@ namespace NetFlox.DAL
         public DbSet<RoleCelebriteFilm> RoleCelebriteFilms { get; set; }
 
 
+        public static string DbFilePath
+        {
+            get
+            {
+                var dbFolder = Path.Combine(
+                    Environment.GetFolderPath(
+                        Environment.SpecialFolder.ApplicationData,
+                        Environment.SpecialFolderOption.DoNotVerify),
+                    "NetFlox");
+                return Path.Combine(dbFolder, "NetFlox.db");
+            }
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var dbFolder = Path.Combine(
-                Environment.GetFolderPath(
-                    Environment.SpecialFolder.ApplicationData,
-                    Environment.SpecialFolderOption.DoNotVerify),
-                "NetFlox");
-            Directory.CreateDirectory(dbFolder);
+            Directory.CreateDirectory(Path.GetDirectoryName(DbFilePath));
             var builder = new SqliteConnectionStringBuilder
             {
-                DataSource = Path.Combine(dbFolder, "NetFlox.db")
+                DataSource = DbFilePath,
             };
             optionsBuilder.UseSqlite(builder.ConnectionString);
         }
