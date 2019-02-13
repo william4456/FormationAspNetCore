@@ -1,6 +1,7 @@
 ﻿using NetFlox.DAL;
 using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConsoleTest
 {
@@ -9,7 +10,18 @@ namespace ConsoleTest
         static void Main(string[] args)
         {
             Console.WriteLine(NetFloxEntities.DbFilePath);
+
+            using (var context = new NetFloxEntities())
+            {
+                var query = "stan";
+                var result = context.Celebrites
+                    .Where(c => EF.Functions.Like(c.Nom, $"%{query}%"))
+                    .OrderByDescending(c => c.RoleCelebriteFilms.Count)
+                    .ThenBy(c => c.Nom)
+                    .ToList();
+            }
         }
+
 
         //public static void ResetDatabase()
         //{

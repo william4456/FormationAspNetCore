@@ -4,7 +4,9 @@
     ViewData["Title"] = "Films";
 }
 
-<h2>Films</h2>
+<h2>Search</h2>
+
+<h3>Il y a <b>@Model.Count()</b> pour la recherche "@ViewBag.search" :</h3>
 
 <table class="table">
     <thead>
@@ -21,6 +23,7 @@
             </th>
         </tr>
     </thead>
+
     <tbody>
         @foreach (var item in Model)
         {

@@ -3,8 +3,18 @@
 }
 
 <div>
+    <h1> Rechercher un film </h1>
+    <form method="GET" asp-action="Search" asp-controller="Films">
+        <label for="search">Films</label>
+        <input id="search" name="search" type="Text" />
+        <input value="Rechercher" type="Submit" />
 
+    </form>
 
-
-
+    <h1>Rechercher célébrités</h1>
+    <form method="GET" asp-action="Search" asp-controller="Celebrites">
+        <label for="search">Célébrités</label>
+        <input id="search" name="search" type="Text" />
+        <input value="Rechercher" type="Submit" />
+    </form>
 </div>
